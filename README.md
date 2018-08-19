@@ -1,10 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Steps to run the application
-`npm install`
+`npm install` <br />
 `npm start`
 
-### Screenshot of application
+## Screenshot of application
 ![react-demo-listing-page](https://user-images.githubusercontent.com/41233916/44309702-37e08000-a3e8-11e8-82b2-8b5808e26a24.PNG)
 ![react-demo-details-page](https://user-images.githubusercontent.com/41233916/44309704-42027e80-a3e8-11e8-9b9f-25ad9c2b5dbf.PNG)
 ![react-demo-add-user](https://user-images.githubusercontent.com/41233916/44309708-4af35000-a3e8-11e8-9498-05a7ff3b8079.PNG)
