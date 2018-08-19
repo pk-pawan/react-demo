@@ -135,7 +135,7 @@ class UserModal extends Component {
                             <button type="button" className={isAdd ? 'btn btn-primary show' : 'hidden'} onClick={e => this.onAdd(e)}>
                                 Add </button>
                             <button type="button" className={isEdit ? 'btn btn-primary show' : 'hidden'} onClick={e => this.onEdit(e)}>
-                                Edit </button>
+                                Update </button>
                             <button type="button" className='btn btn-basic' onClick={e => this.onCancel(e)}>
                                 Cancel </button>
                         </div>
