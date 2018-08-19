@@ -38,7 +38,7 @@ input[name="searchTerm"] {
   float: right;
 }
 .margin10{
-  margin: 10px;
+  margin: 10px 0;
   float: left;
 }
 .addUser{

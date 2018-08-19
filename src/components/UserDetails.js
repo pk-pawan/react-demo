@@ -62,7 +62,7 @@ class UserDetails extends Component {
         </tr>
     }
     renderTableBody() {
-        const { users, searchTerm } = this.state;
+        const { searchTerm } = this.state;
         let usersFromStorage = JSON.parse(localStorage.getItem('users'));
         /* Filter table rows */
         let filteredUsers = usersFromStorage.filter((user) => {
@@ -72,13 +72,14 @@ class UserDetails extends Component {
                 filterTerm = searchTerm.toLowerCase();
             return (userFirstName.indexOf(filterTerm) > -1 || userEmail.indexOf(filterTerm) > -1 || userLastName.indexOf(filterTerm) > -1)
         })
-        localStorage.setItem('users', JSON.stringify(filteredUsers));
         let tableRows = filteredUsers.map((user, index) => {
+            let usersRowsLength = filteredUsers.length;
             return <UserDetail key={index} user={user} users={this.state.users}
                 handleViewClick={this.handleViewClick}
                 handleEditClick={this.handleEditClick}
                 activateUser={this.activateUser}
-                deactivateUser={this.deactivateUser} />
+                deactivateUser={this.deactivateUser}
+                usersRowsLength={usersRowsLength} />
         });
         return tableRows;
     }
@@ -164,13 +165,14 @@ class UserDetails extends Component {
     handleEditUser(edittedState) {
         const { selectedEmail, users } = this.state;
         users.map((user) => {
-            if (user.email === selectedEmail) {
+           if (user.email === selectedEmail) {
                 user.first_name = edittedState.firstName;
                 user.last_name = edittedState.lastName;
                 user.phone = edittedState.phone;
                 user.dob = edittedState.dob;
                 user.email = edittedState.email;
             }
+            return <div />
         })
         this.setState({ users: this.state.users, openModal: false })
         localStorage.setItem('users',JSON.stringify(this.state.users));
