@@ -7,7 +7,7 @@ import axios from 'axios';
 class App extends Component {
 
   state = {
-    usersData: ''
+    usersData: null
   }
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class App extends Component {
     if (this.state.usersData) {
       return (
         <div>
-          <UserDetails users={JSON.parse(localStorage.getItem('users'))} />
+          <UserDetails users={this.state.usersData} />
         </div>
       );
     } else {
@@ -27,16 +27,20 @@ class App extends Component {
   }
 
   getUsersData() {
-    axios.get('https://api.myjson.com/bins/pkisp')
-      .then((res) => {
-        if (res.status === 200 && res.data) {
-          if (!(JSON.parse(localStorage.getItem('users')) && JSON.parse(localStorage.getItem('users').length > 0))){
+    let userData = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : null
+    if (userData) {
+      this.setState({usersData: userData})
+    } else {
+      axios.get('https://api.myjson.com/bins/pkisp')
+        .then((res) => {
+          if (res.status === 200 && res.data) {
             localStorage.setItem('users', JSON.stringify(res.data.users));
+            this.setState({ usersData: res.data.users })
           }
-          this.setState({ usersData: res.data.users })
-        }
-      })
+        })
+    }
   }
+
 }
 
 export default App;
